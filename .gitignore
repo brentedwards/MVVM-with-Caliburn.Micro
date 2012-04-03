@@ -1,0 +1,12 @@
+[Bb]in/
+[Oo]bj/
+!/lib
+*.user
+*.suo
+_ReSharper.*
+*.sln.cache
+*.xap
+*.vspcc
+*.vscc 
+*.vssscc
+TestResults/
