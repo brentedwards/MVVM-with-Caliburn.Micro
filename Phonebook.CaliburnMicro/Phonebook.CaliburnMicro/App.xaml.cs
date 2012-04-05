@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Phonebook.CaliburnMicro
 {
@@ -12,5 +7,9 @@ namespace Phonebook.CaliburnMicro
 	/// </summary>
 	public partial class App : Application
 	{
+		public App()
+		{
+			var bootstrapper = new AppBootstrapper();
+		}
 	}
 }
