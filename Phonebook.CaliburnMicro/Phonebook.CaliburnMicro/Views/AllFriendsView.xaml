@@ -45,7 +45,7 @@
 		<ListBox
 			ItemsSource="{Binding Friends}"
 			ItemTemplate="{DynamicResource PersonTemplate}"
-			SelectedIndex="{Binding SelectedPerson}"
+			SelectedItem="{Binding SelectedPerson}"
 			d:DataContext="{Binding}" />
 		<Button x:Name="Edit"
 			Content="Edit"
