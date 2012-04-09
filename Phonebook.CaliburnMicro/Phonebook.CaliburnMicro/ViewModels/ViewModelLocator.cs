@@ -40,7 +40,7 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			{
 				if (IsInDesignMode)
 				{
-					return new EditPersonViewModel(null);
+					return new EditPersonViewModel();
 				}
 				return null;
 			}

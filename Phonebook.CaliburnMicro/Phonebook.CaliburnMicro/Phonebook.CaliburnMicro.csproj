@@ -70,7 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Messages\CloseEditPersonMessage.cs" />
     <Compile Include="Messages\EditPersonMessage.cs" />
     <Compile Include="Repositories\IPersonRepository.cs" />
     <Compile Include="Models\Person.cs" />

@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using Phonebook.CaliburnMicro.Messages;
 using Phonebook.CaliburnMicro.Models;
 
 namespace Phonebook.CaliburnMicro.ViewModels
@@ -8,19 +7,15 @@ namespace Phonebook.CaliburnMicro.ViewModels
 	{
 		public const string EditPerson = "Edit Person";
 
-		public EditPersonViewModel(IEventAggregator eventAggregator)
+		public EditPersonViewModel()
 		{
-			EventAggregator = eventAggregator;
-
 			DisplayName = EditPerson;
 		}
 
 		public void Close()
 		{
-			EventAggregator.Publish(new CloseEditPersonMessage { PersonViewModel = this });
+			TryClose();
 		}
-
-		private IEventAggregator EventAggregator { get; set; }
 
 		private Person person;
 		public Person Person

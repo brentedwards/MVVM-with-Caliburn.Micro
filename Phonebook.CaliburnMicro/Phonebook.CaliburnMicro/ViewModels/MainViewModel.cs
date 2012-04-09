@@ -4,8 +4,7 @@ using Phonebook.CaliburnMicro.Messages;
 namespace Phonebook.CaliburnMicro.ViewModels
 {
 	public sealed class MainViewModel : Conductor<Screen>.Collection.OneActive,
-		IHandle<EditPersonMessage>,
-		IHandle<CloseEditPersonMessage>
+		IHandle<EditPersonMessage>
 	{
 		public MainViewModel()
 		{
@@ -27,11 +26,6 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			Items.Add(editPersonViewModel);
 
 			ActivateItem(editPersonViewModel);
-		}
-
-		public void Handle(CloseEditPersonMessage message)
-		{
-			Items.Remove(message.PersonViewModel);
 		}
 	}
 }
