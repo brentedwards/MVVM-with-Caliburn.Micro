@@ -1,6 +1,8 @@
-﻿<Application x:Class="Phonebook.CaliburnMicro.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Application.Resources>
-    </Application.Resources>
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:vm="clr-namespace:Phonebook.CaliburnMicro.ViewModels"
+			 x:Class="Phonebook.CaliburnMicro.App">
+	<Application.Resources>
+		<vm:ViewModelLocator x:Key="Locator" />
+	</Application.Resources>
 </Application>
