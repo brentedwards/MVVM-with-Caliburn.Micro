@@ -4,3 +4,4 @@
     [Export(typeof(IShell))]
     public class ShellViewModel : IShell {}
 }
+
