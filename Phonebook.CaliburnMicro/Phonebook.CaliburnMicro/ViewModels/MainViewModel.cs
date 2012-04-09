@@ -25,6 +25,8 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			editPersonViewModel.Person = message.Person;
 
 			Items.Add(editPersonViewModel);
+
+			ActivateItem(editPersonViewModel);
 		}
 
 		public void Handle(CloseEditPersonMessage message)

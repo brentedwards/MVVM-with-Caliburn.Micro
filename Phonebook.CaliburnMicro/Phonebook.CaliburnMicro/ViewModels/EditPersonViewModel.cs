@@ -6,9 +6,13 @@ namespace Phonebook.CaliburnMicro.ViewModels
 {
 	public sealed class EditPersonViewModel : Screen
 	{
+		public const string EditPerson = "Edit Person";
+
 		public EditPersonViewModel(IEventAggregator eventAggregator)
 		{
 			EventAggregator = eventAggregator;
+
+			DisplayName = EditPerson;
 		}
 
 		public void Close()
@@ -26,6 +30,15 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			{
 				person = value;
 				NotifyOfPropertyChange(() => Person);
+
+				if (value != null)
+				{
+					DisplayName = string.Format("Edit {0}", value.Name);
+				}
+				else
+				{
+					DisplayName = EditPerson;
+				}
 			}
 		}
 	}
