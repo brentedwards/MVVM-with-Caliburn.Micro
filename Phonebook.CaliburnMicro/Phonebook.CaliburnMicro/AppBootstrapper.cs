@@ -14,9 +14,11 @@ namespace Phonebook.CaliburnMicro
 	public class AppBootstrapper : Bootstrapper<MainViewModel>
 	{
 		private IWindsorContainer Container { get; set; }
+		private IEventAggregator EventAggregator { get; set; }
 
 		protected override void Configure()
 		{
+			EventAggregator = new EventAggregator();
 			Container = new WindsorContainer();
 
 			Container.Register(
@@ -26,19 +28,37 @@ namespace Phonebook.CaliburnMicro
 
 				Component.For<IPersonRepository>().ImplementedBy<PersonRepository>(),
 				Component.For<IWindowManager>().ImplementedBy<WindowManager>(),
-				Component.For<IEventAggregator>().ImplementedBy<EventAggregator>());
+				Component.For<IEventAggregator>().Instance(EventAggregator));
 		}
 
 		protected override object GetInstance(Type serviceType, string key)
 		{
-			return string.IsNullOrWhiteSpace(key)
+			var instance = string.IsNullOrWhiteSpace(key)
 					? Container.Resolve(serviceType)
 					: Container.Resolve(key, serviceType);
+
+			if (instance is IHandle)
+			{
+				// Auto subscribe to event aggregator.
+				EventAggregator.Subscribe(instance);
+			}
+
+			return instance;
 		}
 
 		protected override IEnumerable<object> GetAllInstances(Type serviceType)
 		{
-			return (IEnumerable<object>)Container.ResolveAll(serviceType);
+			var instances = (IEnumerable<object>)Container.ResolveAll(serviceType);
+			foreach (var instance in instances)
+			{
+				if (instance is IHandle)
+				{
+					// Auto subscribe to event aggregator.
+					EventAggregator.Subscribe(instance);
+				}
+			}
+
+			return instances;
 		}
 
 		protected override void BuildUp(object instance)

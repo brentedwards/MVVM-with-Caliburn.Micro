@@ -7,11 +7,9 @@ namespace Phonebook.CaliburnMicro.ViewModels
 		IHandle<EditPersonMessage>,
 		IHandle<CloseEditPersonMessage>
 	{
-		public MainViewModel(IEventAggregator eventAggregator)
+		public MainViewModel()
 		{
 			DisplayName = "Phonebook";
-
-			eventAggregator.Subscribe(this);
 		}
 
 		protected override void OnInitialize()
