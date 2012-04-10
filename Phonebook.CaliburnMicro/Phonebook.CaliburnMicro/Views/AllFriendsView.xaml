@@ -4,7 +4,8 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:Phonebook_CaliburnMicro_Models="clr-namespace:Phonebook.CaliburnMicro.Models"
-			 x:Class="Phonebook.CaliburnMicro.Views.AllFriendsView" 
+			 xmlns:cal="http://www.caliburnproject.org"
+			 x:Class="Phonebook.CaliburnMicro.Views.AllFriendsView"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="300" d:DesignWidth="300"
 			 d:DataContext="{Binding AllFriends, Source={StaticResource Locator}}">
@@ -13,27 +14,6 @@
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="/Phonebook.CaliburnMicro;component/ProjectDataSources.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
-			<DataTemplate x:Key="PersonTemplate">
-				<Grid Margin="5,0">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
-					<TextBlock
-						TextWrapping="Wrap"
-						d:LayoutOverrides="Width, Height"
-						FontWeight="Bold"
-						FontSize="16"
-						Text="{Binding Name}"
-						Margin="0,2"/>
-					<TextBlock
-						TextWrapping="Wrap"
-						Text="{Binding PhoneNumber}"
-						Margin="0,0,0,5"
-						d:LayoutOverrides="Width, Height"
-						Grid.Row="1"/>
-				</Grid>
-			</DataTemplate>
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<Grid
@@ -42,17 +22,23 @@
 			<RowDefinition/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<ListBox
-			ItemsSource="{Binding Friends}"
-			ItemTemplate="{DynamicResource PersonTemplate}"
-			SelectedItem="{Binding SelectedPerson}"
-			d:DataContext="{Binding}" />
+		<ListBox ItemsSource="{Binding Friends}"
+				 ItemTemplate="{DynamicResource PersonTemplate}"
+				 SelectedItem="{Binding SelectedPerson}"
+				 d:DataContext="{Binding}">
+			<ListBox.Resources>
+				<Style TargetType="ListBoxItem">
+					<Setter Property="cal:Message.Attach"
+							Value="[Event MouseDoubleClick] = [Action View($dataContext)]" />
+				</Style>
+			</ListBox.Resources>
+		</ListBox>
 		<Button x:Name="Edit"
 			Content="Edit"
 			HorizontalAlignment="Center"
 			VerticalAlignment="Top"
 			Width="75"
-			Grid.Row="2"
-			Margin="0,5"/>
+			d:LayoutOverrides="VerticalAlignment" Grid.Row="1" Margin="0,5,0,0"
+			/>
 	</Grid>
 </UserControl>

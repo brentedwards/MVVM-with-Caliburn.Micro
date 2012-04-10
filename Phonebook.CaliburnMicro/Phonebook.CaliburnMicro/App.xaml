@@ -4,5 +4,23 @@
 			 x:Class="Phonebook.CaliburnMicro.App">
 	<Application.Resources>
 		<vm:ViewModelLocator x:Key="Locator" />
+
+		<DataTemplate x:Key="PersonTemplate">
+			<Grid Margin="5,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<TextBlock TextWrapping="Wrap"
+						   FontWeight="Bold"
+						   FontSize="16"
+						   Text="{Binding Name}"
+						   Margin="0,2" />
+				<TextBlock TextWrapping="Wrap"
+						   Text="{Binding PhoneNumber}"
+						   Margin="0,0,0,5"
+						   Grid.Row="1" />
+			</Grid>
+		</DataTemplate>
 	</Application.Resources>
 </Application>

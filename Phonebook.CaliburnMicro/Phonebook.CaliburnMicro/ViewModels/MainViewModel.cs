@@ -4,11 +4,14 @@ using Phonebook.CaliburnMicro.Messages;
 namespace Phonebook.CaliburnMicro.ViewModels
 {
 	public sealed class MainViewModel : Conductor<Screen>.Collection.OneActive,
-		IHandle<EditPersonMessage>
+		IHandle<EditPersonMessage>,
+		IHandle<ViewPersonMessage>
 	{
-		public MainViewModel()
+		public MainViewModel(IWindowManager windowManager)
 		{
 			DisplayName = "Phonebook";
+
+			WindowManager = windowManager;
 		}
 
 		protected override void OnInitialize()
@@ -23,9 +26,19 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			var editPersonViewModel = IoC.Get<EditPersonViewModel>();
 			editPersonViewModel.Person = message.Person;
 
-			Items.Add(editPersonViewModel);
-
-			ActivateItem(editPersonViewModel);
+			WindowManager.ShowDialog(editPersonViewModel);
 		}
+
+		public void Handle(ViewPersonMessage message)
+		{
+			var viewPersonViewModel = IoC.Get<ViewPersonViewModel>();
+			viewPersonViewModel.Person = message.Person;
+
+			Items.Add(viewPersonViewModel);
+
+			ActivateItem(viewPersonViewModel);
+		}
+
+		private IWindowManager WindowManager { get; set; }
 	}
 }
