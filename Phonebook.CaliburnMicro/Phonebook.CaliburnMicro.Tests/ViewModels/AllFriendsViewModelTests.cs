@@ -53,6 +53,22 @@ namespace Phonebook.CaliburnMicro.Tests.ViewModels
 		}
 
 		[TestMethod]
+		public void View()
+		{
+			// Arrange
+			var selectedFriend = new Person();
+
+			ViewPersonMessage publishedMessage = null;
+			EventAggregator.Publish(Arg.Do<ViewPersonMessage>(m => publishedMessage = m));
+
+			// Act
+			ViewModel.View(selectedFriend);
+
+			// Assert
+			Assert.AreSame(selectedFriend, publishedMessage.Person);
+		}
+
+		[TestMethod]
 		public void ViewModelInitialized()
 		{
 			// Arrange
