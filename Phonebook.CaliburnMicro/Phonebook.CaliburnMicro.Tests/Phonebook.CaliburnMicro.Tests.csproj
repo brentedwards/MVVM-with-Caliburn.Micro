@@ -59,6 +59,7 @@
     <Compile Include="ViewModels\AllFriendsViewModelTests.cs" />
     <Compile Include="ViewModels\EditPersonViewModelTests.cs" />
     <Compile Include="ViewModels\MainViewModelTests.cs" />
+    <Compile Include="ViewModels\ViewPersonViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Phonebook.CaliburnMicro\Phonebook.CaliburnMicro.csproj">
