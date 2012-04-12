@@ -78,6 +78,7 @@ namespace Phonebook.CaliburnMicro.Tests.ViewModels
 			// Assert
 			Assert.AreSame(person, viewPersonViewModel.Person, "Person");
 			Assert.AreEqual(1, ViewModel.Items.Count, "Items Count");
+			Assert.AreSame(viewPersonViewModel, ViewModel.ActiveItem, "ActiveItem");
 		}
 	}
 }
