@@ -3,9 +3,7 @@ using Phonebook.CaliburnMicro.Messages;
 
 namespace Phonebook.CaliburnMicro.ViewModels
 {
-	public sealed class MainViewModel : Conductor<Screen>.Collection.OneActive,
-		IHandle<EditPersonMessage>,
-		IHandle<ViewPersonMessage>
+	public sealed class MainViewModel : Conductor<Screen>.Collection.OneActive // TODO: 1.Interfaces
 	{
 		public MainViewModel(IWindowManager windowManager)
 		{
@@ -21,23 +19,9 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			Items.Add(IoC.Get<AllFriendsViewModel>());
 		}
 
-		public void Handle(EditPersonMessage message)
-		{
-			var editPersonViewModel = IoC.Get<EditPersonViewModel>();
-			editPersonViewModel.Person = message.Person;
+		// TODO: 2.Handle EditPersonMessage
 
-			WindowManager.ShowDialog(editPersonViewModel);
-		}
-
-		public void Handle(ViewPersonMessage message)
-		{
-			var viewPersonViewModel = IoC.Get<ViewPersonViewModel>();
-			viewPersonViewModel.Person = message.Person;
-
-			Items.Add(viewPersonViewModel);
-
-			ActivateItem(viewPersonViewModel);
-		}
+		// TODO: 3.Handle ViewPersonMessage
 
 		private IWindowManager WindowManager { get; set; }
 	}

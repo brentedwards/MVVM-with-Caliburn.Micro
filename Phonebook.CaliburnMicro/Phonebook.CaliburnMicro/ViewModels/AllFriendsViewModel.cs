@@ -20,15 +20,9 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			Friends = new ObservableCollection<Person>();
 		}
 
-		public void Edit()
-		{
-			EventAggregator.Publish(new EditPersonMessage { Person = SelectedPerson });
-		}
+		// TODO: 1.Edit
 
-		public void View(Person person)
-		{
-			EventAggregator.Publish(new ViewPersonMessage { Person = person });
-		}
+		// TODO: 2.View
 
 		protected override void OnInitialize()
 		{
