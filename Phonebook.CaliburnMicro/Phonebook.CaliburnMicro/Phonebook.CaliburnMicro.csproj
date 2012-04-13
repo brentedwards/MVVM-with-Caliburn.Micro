@@ -89,9 +89,6 @@
     <Compile Include="Views\EditPersonView.xaml.cs">
       <DependentUpon>EditPersonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -114,10 +111,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditPersonView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
