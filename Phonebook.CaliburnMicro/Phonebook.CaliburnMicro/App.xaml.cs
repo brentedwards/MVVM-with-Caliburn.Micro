@@ -9,7 +9,7 @@ namespace Phonebook.CaliburnMicro
 	{
 		public App()
 		{
-			// TODO: 2.App
+			var bootstrapper = new AppBootstrapper();
 		}
 	}
 }
