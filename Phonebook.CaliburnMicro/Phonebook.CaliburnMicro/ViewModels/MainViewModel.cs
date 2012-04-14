@@ -24,8 +24,10 @@ namespace Phonebook.CaliburnMicro.ViewModels
 
 		public void Handle(EditPersonMessage message)
 		{
-			// TODO: 4.Handle EditPersonMessage Refactored
-			MessageBox.Show("Edit Clicked!");
+			var editPersonViewModel = IoC.Get<EditPersonViewModel>();
+			editPersonViewModel.Person = message.Person;
+
+			WindowManager.ShowDialog(editPersonViewModel);
 		}
 
 		public void Handle(ViewPersonMessage message)
