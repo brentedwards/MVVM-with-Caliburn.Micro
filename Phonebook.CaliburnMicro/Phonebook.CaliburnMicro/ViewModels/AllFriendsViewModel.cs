@@ -3,6 +3,7 @@ using Caliburn.Micro;
 using Phonebook.CaliburnMicro.Messages;
 using Phonebook.CaliburnMicro.Models;
 using Phonebook.CaliburnMicro.Repositories;
+using System.Windows;
 
 namespace Phonebook.CaliburnMicro.ViewModels
 {
@@ -20,9 +21,15 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			Friends = new ObservableCollection<Person>();
 		}
 
-		// TODO: 1.Edit
+		public void Edit()
+		{
+			EventAggregator.Publish(new EditPersonMessage { Person = SelectedPerson });
+		}
 
-		// TODO: 2.View
+		public void View(Person person)
+		{
+			EventAggregator.Publish(new ViewPersonMessage { Person = person });
+		}
 
 		protected override void OnInitialize()
 		{

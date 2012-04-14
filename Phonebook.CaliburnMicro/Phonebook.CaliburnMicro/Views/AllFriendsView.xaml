@@ -26,7 +26,12 @@
 				 ItemTemplate="{DynamicResource PersonTemplate}"
 				 SelectedItem="{Binding SelectedPerson}"
 				 d:DataContext="{Binding}">
-			<!-- TODO: 1.Action View -->
+			<ListBox.Resources>
+				<Style TargetType="ListBoxItem">
+					<Setter Property="cal:Message.Attach"
+							Value="[Event MouseDoubleClick] = [Action View($dataContext)]" />
+				</Style>
+			</ListBox.Resources>
 		</ListBox>
 		<Button x:Name="Edit"
 			Content="Edit"
