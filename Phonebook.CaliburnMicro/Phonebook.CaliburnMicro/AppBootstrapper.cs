@@ -37,7 +37,11 @@ namespace Phonebook.CaliburnMicro
 					? Container.Resolve(serviceType)
 					: Container.Resolve(key, serviceType);
 
-			// TODO: 6.GetInstance - Auto Subscribe
+			if (instance is IHandle)
+			{
+				// Auto subscribe to event aggregator.
+				EventAggregator.Subscribe(instance);
+			}
 
 			return instance;
 		}
@@ -45,7 +49,14 @@ namespace Phonebook.CaliburnMicro
 		protected override IEnumerable<object> GetAllInstances(Type serviceType)
 		{
 			var instances = (IEnumerable<object>)Container.ResolveAll(serviceType);
-			// TODO: 7.GetAllInstances - Auto Subscribe
+			foreach (var instance in instances)
+			{
+				if (instance is IHandle)
+				{
+					// Auto subscribe to event aggregator.
+					EventAggregator.Subscribe(instance);
+				}
+			}
 
 			return instances;
 		}

@@ -23,14 +23,12 @@ namespace Phonebook.CaliburnMicro.ViewModels
 
 		public void Edit()
 		{
-			// TODO: 3.Edit Refactored
-			MessageBox.Show("Edit Clicked!");
+			EventAggregator.Publish(new EditPersonMessage { Person = SelectedPerson });
 		}
 
 		public void View(Person person)
 		{
-			// TODO: 4. View Refactored
-			MessageBox.Show("View Clicked!");
+			EventAggregator.Publish(new ViewPersonMessage { Person = person });
 		}
 
 		protected override void OnInitialize()

@@ -1,9 +1,12 @@
 ﻿using Caliburn.Micro;
 using Phonebook.CaliburnMicro.Messages;
+using System.Windows;
 
 namespace Phonebook.CaliburnMicro.ViewModels
 {
-	public sealed class MainViewModel : Conductor<Screen>.Collection.OneActive // TODO: 1.Interfaces
+	public sealed class MainViewModel : Conductor<Screen>.Collection.OneActive,
+		IHandle<EditPersonMessage>,
+		IHandle<ViewPersonMessage>
 	{
 		public MainViewModel(IWindowManager windowManager)
 		{
@@ -19,9 +22,17 @@ namespace Phonebook.CaliburnMicro.ViewModels
 			Items.Add(IoC.Get<AllFriendsViewModel>());
 		}
 
-		// TODO: 2.Handle EditPersonMessage
+		public void Handle(EditPersonMessage message)
+		{
+			// TODO: 4.Handle EditPersonMessage Refactored
+			MessageBox.Show("Edit Clicked!");
+		}
 
-		// TODO: 3.Handle ViewPersonMessage
+		public void Handle(ViewPersonMessage message)
+		{
+			// TODO: 5.Handle ViewPersonMessage Refactored
+			MessageBox.Show("View Clicked!");
+		}
 
 		private IWindowManager WindowManager { get; set; }
 	}
